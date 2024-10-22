@@ -10,6 +10,7 @@ export default function SignIn() {
   // const [loading, setLoading] = useState(false);
   const{loading,error} = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleChange = (e) =>{
       setFormData(
         {
@@ -22,7 +23,7 @@ export default function SignIn() {
       e.preventDefault();
 
       try {
-          useDispatch(signInStart());
+          dispatch(signInStart());
           const res = await fetch('api/auth/signin',
           {
              method: 'POST',
@@ -36,18 +37,18 @@ export default function SignIn() {
           if(data.success === false){
             // setLoading(false);
             // setError(data.message);
-            useDispatch(signInFailure());
+            dispatch(signInFailure(data.message));
     
             return;
           }
 
           // setLoading(false);
           // setError(null);
-          useDispatch(signInSuccess());
+          dispatch(signInSuccess(data));
           navigate('/');
     
       } catch (error) {
-        useDispatch(signInFailure());
+        dispatch(signInFailure(error.message));
         
       }
  
