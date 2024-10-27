@@ -22,7 +22,9 @@ const userSchema = new mongoose.Schema({
         default: "https://static.vecteezy.com/system/resources/previews/003/715/527/non_2x/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-vector.jpg",
     },
 
-},{timestaps:true})
+  },
+  {timestaps:true}
+);
 
 const User = mongoose.model('User',userSchema);
 
