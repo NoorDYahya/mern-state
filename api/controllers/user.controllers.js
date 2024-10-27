@@ -2,7 +2,9 @@ import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 
 export const test = (req,res) =>{
-    res.send("hellow world");
+    res.json({
+      message: 'Api route is working!',
+    });
 };
  
 export const updateUser  = async(req,res,next) => {
